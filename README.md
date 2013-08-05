@@ -24,7 +24,7 @@ Usage
 - (JSONSyntaxHighlight *)initWithJSON:(id)JSON;
 ```
 
-Create a `JSONSyntaxHighlight` object given a JSON object (`NSDictionary *`, `NSArray *`, etc.)
+Create a `JSONSyntaxHighlight` object given a JSON object (`NSDictionary`, `NSArray`, etc.)
 
 ``` objective-c
 @property (readonly, nonatomic, strong) id JSON;
@@ -64,7 +64,7 @@ and values (both string and non-string)
 
 Fire a callback for every key item found in the parsed JSON, each callback
 is fired with the `NSRange` the substring appears in `self.parsedJSON`, as well
-as the `NSString \*` at that location.
+as the `NSString` at that location.
 
 ---
 
@@ -73,7 +73,7 @@ as the `NSString \*` at that location.
 + (Color *)colorWithRGB:(NSInteger)rgbValue alpha:(CGFloat)alpha;
 ```
 
-These functions can be used to return an `NSColor \*` or `UIColor \*` object (as appropriate)
+These functions can be used to return an `NSColor` or `UIColor` object (as appropriate)
 based on the given `rgbValue`
 
 
