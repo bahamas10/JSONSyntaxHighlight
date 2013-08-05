@@ -50,7 +50,7 @@ pretty printed format.  If unspecified, pretty printing is the default
 @property (nonatomic, strong) NSDictionary *nonStringAttributes;
 ```
 
-Set the attribute propertys to be used for the `NSAttributedStrings` for the JSON keys
+Set the attributes to be used for the `NSAttributedStrings` for the JSON keys
 and values (both string and non-string)
 
 ---
