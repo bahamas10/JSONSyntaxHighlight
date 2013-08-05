@@ -6,6 +6,8 @@ without using HTML
 
 ![jsh](http://www.daveeddy.com/static/media/github/jsh.png)
 
+Requires ARC
+
 Installation
 ------------
 
