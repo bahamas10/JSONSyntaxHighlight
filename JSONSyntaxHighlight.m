@@ -49,7 +49,7 @@
         _JSON = JSON;
         
         // create the object local regex
-        regex = [NSRegularExpression regularExpressionWithPattern:@"^( *)(\"[\\w]+\" : )?(\"[^\"]*\"|[\\w.+-]*)?([,\\[\\]{}]?,?$)"
+	regex = [NSRegularExpression regularExpressionWithPattern:@"^( *)(\".+\" : )?(\"[^\"]*\"|[\\w.+-]*)?([,\\[\\]{}]?,?$)"
                                                           options:NSRegularExpressionAnchorsMatchLines
                                                             error:nil];
         
