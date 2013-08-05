@@ -66,6 +66,30 @@ Fire a callback for every key item found in the parsed JSON, each callback
 is fired with the `NSRange` the substring appears in `self.parsedJSON`, as well
 as the `NSString` at that location.
 
+An example JSON file with each "key item" is illustrated below
+
+```
+{
+     "name": "dave",
++---++------++----++
+|    |       |     |
+|    |       |     +-->end    (may be empty)
+|    |       +-------->value  (will have quotes if string)
+|    +---------------->key    (will have quotes and colon)
++--------------------->indent (leading spaces)
+     "age": 24
++---++-----++++
+|    |      | |
+|    |      | +------->end    @""
+|    |      +--------->value  @"24"
+|    +---------------->key    @"\"age\":"
++--------------------->indent @"    "
+}
++
+|
++--------------------->end    @"}"
+```
+
 ---
 
 ``` objective-c
