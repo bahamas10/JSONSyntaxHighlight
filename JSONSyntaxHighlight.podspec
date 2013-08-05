@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "Add syntax highlighting to JSON objects in Objective C for both Cocoa and iOS without using HTML."
   s.homepage     = "https://github.com/bahamas10/JSONSyntaxHighlight"
   s.screenshots  = "http://daveeddy.com/static/media/github/jsh.png"
-  s.license      = 'MIT'
+  s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author       = { "Dave Eddy" => "dave@daveeddy.com" }
   s.source       = { :git => "https://github.com/bahamas10/JSONSyntaxHighlight.git", :tag => "1.0.0" }
 
