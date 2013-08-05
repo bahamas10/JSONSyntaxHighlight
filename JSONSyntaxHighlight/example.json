@@ -1,0 +1,12 @@
+{
+    "author": {
+        "name": "Dave Eddy",
+        "website": "http://www.daveeddy.com"
+    },
+    "numbers": [1, 2, 3, 4],
+    "literals": [
+        null,
+        true,
+        false
+    ]
+}
