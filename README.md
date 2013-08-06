@@ -11,11 +11,97 @@ Requires ARC
 Installation
 ------------
 
+### [Cocoa Pods](cocoapods.org)
+
+Add `JSONSyntaxHighlight` to your `Podfile`
+
+``` ruby
+pod 'JSONSyntaxHighlight'
+```
+
+### Manually
+
 - Copy `JSONSyntaxHighlight.m` and `JSONSyntaxHighlight.h` to your porject
 - iOS
     - Add `UIKit.framework` to your project
 - Mac
     - Add `AppKit.framework` to your project
+
+Example
+-------
+
+Clone this repository and open the XCode project to see the Mac and iOS examples
+
+Import this library
+
+``` objective-c
+// Pods
+#import <JSONSyntaxHighlight/JSONSyntaxHighlight.h>
+// - or -
+// Manually
+#import "JSONSyntaxHighlight.h"
+```
+
+Create the `JSONSyntaxHighlight` object
+
+``` objective-c
+id JSONObj = @{
+  @"name": @"dave"
+};
+
+JSONSyntaxHighlight *jsh = [[JSONSyntaxHighlight alloc] initWithJSON:JSONObj];
+```
+
+### Basic highlighting
+
+``` objective-c
+NSAttributedString *s;
+
+s = [jsh highlightJSON];
+// s => an NSAttributedString with the JSON highlighted in pretty print format
+
+s = [jsh highlightJSONWithPrettyPrint:NO];
+// s => same as above, but compressed JSON is returned
+```
+
+### Advanced highlighting
+
+``` objective-c
+jsh.nonStringAttributes = @{NSForegroundColorAttributeName: [JSONSyntaxHighlight colorWithRGB:0xffffff]};
+jsh.stringAttributes = @{NSForegroundColorAttributeName: [JSONSyntaxHighlight colorWithRGB:0x00ff00]};
+jsh.keyAttributes = @{NSForegroundColorAttributeName: [JSONSyntaxHighlight colorWithRGB:0x0000ff]};
+s = [jsh highlightJSON];
+// s => an NSAttributedString with the JSON highlighted in pretty print format
+// using the colors specified above
+```
+
+### Event driven API
+
+``` objective-c
+NSMutableString *json = [[NSMutableString alloc] initWithString:@""];
+[jsh enumerateMatchesWithIndentBlock:
+ // The indent
+ ^(NSRange range, NSString *s) {
+     [json appendAttributedString:s];
+ }
+                             keyBlock:
+ // The key (with quotes and colon)
+ ^(NSRange range, NSString *s) {
+     [json appendAttributedString:s];
+ }
+                           valueBlock:
+ // The value
+ ^(NSRange range, NSString *s) {
+     [json appendAttributedString:s];
+ }
+                             endBlock:
+ // The final comma, or ending character
+ ^(NSRange range, NSString *s) {
+     [json appendAttributedString:s];
+     [json appendAttributedString:@"\n"];
+ }];
+// json => a pretty printed JSON string
+```
 
 Usage
 -----
@@ -100,84 +186,11 @@ An example JSON file with each "key item" is illustrated below
 These functions can be used to return an `NSColor` or `UIColor` object (as appropriate)
 based on the given `rgbValue`
 
-
-
-Example
--------
-
-Clone this project and open the XCode project to see the Mac and iOS examples
-
-Import this library
-
-``` objective-c
-#import "JSONSyntaxHighlight.h"
-```
-
-Create the `JSONSyntaxHighlight` object
-
-``` objective-c
-id JSONObj = @{
-  @"name": @"dave"
-};
-
-JSONSyntaxHighlight *jsh = [[JSONSyntaxHighlight alloc] initWithJSON:JSONObj];
-
-NSAttributedString *s;
-```
-
-Basic highlighting
-
-``` objective-c
-s = [jsh highlightJSON];
-// s => an NSAttributedString with the JSON highlighted in pretty print format
-
-s = [jsh highlightJSONWithPrettyPrint:NO];
-// s => same as above, but compressed JSON is returned
-```
-
-Advanced highlighting
-
-``` objective-c
-jsh.nonStringAttributes = @{NSForegroundColorAttributeName: [JSONSyntaxHighlight colorWithRGB:0xffffff]};
-jsh.stringAttributes = @{NSForegroundColorAttributeName: [JSONSyntaxHighlight colorWithRGB:0x00ff00]};
-jsh.keyAttributes = @{NSForegroundColorAttributeName: [JSONSyntaxHighlight colorWithRGB:0x0000ff]};
-s = [jsh highlightJSON];
-// s => an NSAttributedString with the JSON highlighted in pretty print format
-// using the colors specified above
-```
-
-Event driven API
-
-``` objective-c
-NSMutableString *json = [[NSMutableString alloc] initWithString:@""];
-[jsh enumerateMatchesWithIndentBlock:
- // The indent
- ^(NSRange range, NSString *s) {
-     [json appendAttributedString:s];
- }
-                             keyBlock:
- // The key (with quotes and colon)
- ^(NSRange range, NSString *s) {
-     [json appendAttributedString:s];
- }
-                           valueBlock:
- // The value
- ^(NSRange range, NSString *s) {
-     [json appendAttributedString:s];
- }
-                             endBlock:
- // The final comma, or ending character
- ^(NSRange range, NSString *s) {
-     [json appendAttributedString:s];
-     [json appendAttributedString:@"\n"];
- }];
-// json => a pretty printed JSON string
-```
-
 Todo
 ----
 
-- Create a cocoa pod for this library
+- The regex parsing of JSON is ugly... maybe a custom stringify function
+should be used
 
 License
 -------
