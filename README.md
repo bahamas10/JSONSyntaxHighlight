@@ -11,7 +11,7 @@ Requires ARC
 Installation
 ------------
 
-### [Cocoa Pods](cocoapods.org)
+### [Cocoa Pods](http://cocoapods.org)
 
 Add `JSONSyntaxHighlight` to your `Podfile`
 
