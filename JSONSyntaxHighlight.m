@@ -84,7 +84,7 @@
     [self enumerateMatchesWithIndentBlock:
      // The indent
      ^(NSRange range, NSString *s) {
-         NSAttributedString *as = [[NSAttributedString alloc] initWithString:s attributes:@{}];
+         NSAttributedString *as = [[NSAttributedString alloc] initWithString:s attributes:self.defaultAttributes];
          if (prettyPrint) [line appendAttributedString:as];
      }
                                  keyBlock:
@@ -94,7 +94,7 @@
          NSString *key = [s substringToIndex:s.length - 3];
          [line appendAttributedString:[[NSAttributedString alloc] initWithString:key attributes:self.keyAttributes]];
          NSString *colon = prettyPrint ? @" : " : @":";
-         [line appendAttributedString:[[NSAttributedString alloc] initWithString:colon attributes:@{}]];
+         [line appendAttributedString:[[NSAttributedString alloc] initWithString:colon attributes:self.defaultAttributes]];
      }
                                valueBlock:
      // The value
@@ -110,7 +110,7 @@
                                  endBlock:
      // The final comma, or ending character
      ^(NSRange range, NSString *s) {
-         NSAttributedString *as = [[NSAttributedString alloc] initWithString:s attributes:@{}];
+         NSAttributedString *as = [[NSAttributedString alloc] initWithString:s attributes:self.defaultAttributes];
          [line appendAttributedString:as];
          if (prettyPrint) [line appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
      }];
