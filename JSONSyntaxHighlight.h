@@ -64,6 +64,7 @@
 @property (readonly, nonatomic, strong) NSString *parsedJSON;
 
 // The attributes for Attributed Text
+@property (nonatomic, strong) NSDictionary *defaultAttributes;
 @property (nonatomic, strong) NSDictionary *keyAttributes;
 @property (nonatomic, strong) NSDictionary *stringAttributes;
 @property (nonatomic, strong) NSDictionary *nonStringAttributes;
