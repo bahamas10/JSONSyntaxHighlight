@@ -30,7 +30,7 @@ pod 'JSONSyntaxHighlight'
 Example
 -------
 
-Clone this repository and open the XCode project to see the Mac and iOS examples
+Clone this repository and open the Xcode project to see the Mac and iOS examples
 
 Import this library
 
